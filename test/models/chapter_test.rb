@@ -12,9 +12,10 @@ class ChapterTest < ActiveSupport::TestCase
     end
   end
 
-  test "should respond to #book, #chapter, and #info_html" do
+  test "should respond to #book, #chapter, #verses, and #info_html" do
     [*@valid_chapters, *@invalid_chapters].each do |chapter|
       assert_respond_to chapter, :book, "did not respond to #book"
+      assert_respond_to chapter, :verses, "did not respond to #verses"
       assert_respond_to chapter, :chapter, "did not respond to #chapter"
       assert_respond_to chapter, :info_html, "did not respond to #info_html"
     end
@@ -27,13 +28,18 @@ class ChapterTest < ActiveSupport::TestCase
     end
   end
 
-  test "should satisfy validations" do
+  test "should pass validations for Chapter" do
+    @valid_chapters.each do |chapter|
+      assert chapter.info_html.present?
+      assert chapter.chapter.between? 1, Chapter::LONGEST
+    end
+  end
+  
+  test "shpuld pass validatioin for Book" do
     @valid_chapters.each do |chapter|
       book = chapter.book
-      assert chapter.info_html
-      assert chapter.chapter.between? 1, Chapter::LONGEST
       assert book.name.length.between? Book::SHORTEST, Book::LONGEST
-    end
+    end  
   end
 
   test "should save chapter" do
@@ -42,7 +48,14 @@ class ChapterTest < ActiveSupport::TestCase
     end
   end
 
-  test "should not satisfy validations" do
+  test "should not pass validations for Chapter" do
+    @invalid_chapters.each do |chapter|
+      assert_not chapter.info_html.present? &&
+      chapter.chapter.between?(1, Chapter::LONGEST)
+    end
+  end
+  
+  test "should not pass validation for Book" do
     @invalid_chapters.each do |chapter|
       book = chapter.book
       assert_not book.name.length.between? Book::SHORTEST, Book::LONGEST

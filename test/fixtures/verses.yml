@@ -1,0 +1,50 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  book: three
+  chapter: four
+  verse: 15
+  info_html: <span>Book</span> <span>three</span> <span>chapter</span> <span>four</span> <span>verse</span> <span>fifteen</span>
+  info_text: Book three chapter four verse fifteen text
+
+two:
+  book: one
+  chapter: three
+  verse: 170
+  info_html: <span>Book</span> <span>one</span> <span>chapter</span> <span>three</span> <span>verse</span> <span>one</span> <span>seven</span> <span>zero</span>
+  info_text: Book one chapter three verse one seven zero text
+
+three:
+  book: four
+  chapter: two
+  verse: 1
+  info_html: <span>Book</span> <span>four</span> <span>chapter</span> <span>two</span> <span>verse</span> <span>one</span>
+  info_text: Book four chapter two verse one text
+
+four:
+  book: two
+  chapter: one
+  verse: 120
+  info_html: <span>Book</span> <span>chapter</span> <span>one</span> <span>verse</span> <span>one</span> <span>two</span> <span>zero</span>
+  info_text: Book two chapter one verse one two zero text
+
+five:
+  book: seven
+  chapter: six
+  verse: 0
+  info_html: ""
+  info_text: Book seven chapter six verse zero text
+
+six:
+  book: five
+  chapter: seven
+  verse: 177
+  info_html: <span>Book</span> <span>five</span> <span>chapter</span> <span>seven</span> <span>verse</span> <span>one</span> <span>seven</span> <span>zero</span>
+  info_text: ""
+
+seven:
+  book: six
+  chapter: five
+  verse: 120
+  info_html: ""
+  info_text: ""

@@ -18,11 +18,12 @@ class BookTest < ActiveSupport::TestCase
     end
   end
 
-  test "should respond to #id, #name, and #chapters" do
+  test "should respond to #id, #name, #chapters, and #verses" do
     [*@valid_books, *@invalid_books].each do |book|
       assert_respond_to book, :id, "did not respond to #id"
       assert_respond_to book, :name, "did not respond to #name"
       assert_respond_to book, :chapters, "did not respond to #chapter"
+      assert_respond_to book, :verses, "did not respond to #verses"
     end
   end
 
