@@ -7,4 +7,8 @@ class APIControllerTest < ActionDispatch::IntegrationTest
     assert_equal "html", @request.format
     assert_equal "index", @controller.action_name
   end
+
+  teardown do
+    Rails.cache.clear
+  end
 end
