@@ -1,0 +1,10 @@
+<header>
+  <h1>KJV Bible</h1>
+  <h2>Let the word of God dwell in you richly</h2>
+</header>
+<%= form_with url: "#" do |form| %>
+  <%= form.text_field :book, placeholder: "Books" %>
+  <%= form.text_field :chapter, placeholder: "Chapter", type: :number, min: 1, max: 150 %>
+  <%= form.text_field :verse, placeholder: "Verse", type: :number, min: 1, max: 176 %>
+  <%= form.submit "Search" %>
+<% end %>
