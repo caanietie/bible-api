@@ -12,22 +12,23 @@ class BookTest < ActiveSupport::TestCase
     end
   end
 
-  test "should be instances of book" do
+  test "should be instance of book" do
     [*@valid_books, *@invalid_books].each do |book|
       assert_instance_of Book, book, "is not an instance of book"
     end
   end
 
-  test "should respond to #id and #name" do
+  test "should respond to #id, #name, and #chapters" do
     [*@valid_books, *@invalid_books].each do |book|
-      assert_respond_to book, :id, "does not respond to #id"
-      assert_respond_to book, :name, "does not respond to #name"
+      assert_respond_to book, :id, "did not respond to #id"
+      assert_respond_to book, :name, "did not respond to #name"
+      assert_respond_to book, :chapters, "did not respond to #chapter"
     end
   end
 
   test "name should satisfy criteria" do
     @valid_books.each do |book|
-      assert book.name.length.between? 3, 15
+      assert book.name.length.between? Book::SHORTEST, Book::LONGEST
     end
   end
 
@@ -39,7 +40,7 @@ class BookTest < ActiveSupport::TestCase
 
   test "name should not satisfy criteria" do
     @invalid_books.each do |book|
-      assert_not book.name.length.between? 3, 15
+      assert_not book.name.length.between? Book::SHORTEST, Book::LONGEST
     end
   end
 

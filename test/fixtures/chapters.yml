@@ -1,0 +1,36 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  book: three
+  chapter: 1
+  info_html: Book three chapter 1
+
+two:
+  book: four
+  chapter: 150
+  info_html: Book four chapter one five zero
+
+three:
+  book: two
+  chapter: 45
+  info_html: Book two chapter forty five
+
+four:
+  book: one
+  chapter: 120
+  info_html: Book one chapter onew two zero
+
+five:
+  book: six
+  chapter: 0
+  info_html: ""
+
+six:
+  book: seven
+  chapter: 151
+  info_html: My
+
+seven:
+  book: five
+  chapter: 52
+  info_html: ""
