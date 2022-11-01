@@ -1,7 +1,21 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+SQLite3::Database.open "db/seeds.db" do |db|
+  stmt_book = "SELECT bookID, bookName FROM bookNames"
+  db.execute stmt_book do |num, bookName|
+    book = Book.new name: bookName
+    book.save
+    print "#{book.name}"
+    stmt_chapter = "SELECT chapter, info FROM chapters WHERE bookNum IS #{num}"
+    db.execute stmt_chapter do |chapter, info|
+      chap = book.chapters.build chapter: chapter, info_html: info
+      chap.save
+      print " #{chapter}"
+      stmt_verse = "SELECT verse, info FROM verses WHERE bookNum IS #{num} AND chapter IS #{chapter}"
+      info_html = info.scan %r[<div class="v" id="\d{1,3}">.*?</div>]
+      db.execute stmt_verse do |verse, info|
+        vers = chap.verses.build book_id: book.id, verse: verse, info_text: info, info_html: info_html[verse - 1]
+        vers.save
+      end
+    end
+    puts
+  end
+end
