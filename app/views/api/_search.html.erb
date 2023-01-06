@@ -1,0 +1,33 @@
+<div>
+  <h4>Searching the Bible</h4>
+  <p>
+  To search for passages in the bible that have a given word or phrase,
+  request should be in this format:
+    <code>
+      <pre>/kjv_bible/api/kjv_bible/search/<em>value</em></pre>
+    </code>
+    where <em>value</em> is the word or phrase to search for.<br>
+  </p>
+  <p>
+    Response from the server will be in the format:
+    <code language = "JSON">
+      <pre>
+        {
+          search: {
+            value: <i>string</i>,
+            data: [
+              {
+                  book_id: <i>integer</i>,
+                book_name: <i>string</i>,
+                  chapter: <i>integer</i>,
+               chapter_id: <i>integer</i>,
+                    verse: <i>integer</i>,
+                 verse_id: <i>integer</i>
+              }, ...
+            ]
+          }
+        }
+      </pre>
+    </code>
+  </p>
+</div>

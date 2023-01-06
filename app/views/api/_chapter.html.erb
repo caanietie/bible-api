@@ -1,0 +1,35 @@
+<div>
+  <h4>Requesting for chapters</h4>
+  <p>
+    To request for a chapter, send the request in the following format
+    <code>
+      <pre>/kjv_bible/api/kjv_bible/<em>book_name</em>/<em>chapter</em></pre>
+    </code>
+    where <em>book_name</em> is the name of the book in the Bible
+    and <em>chapter</em> is the chapter in <em>book_name</em>.<br>
+  </p>
+  <p>
+    Response from the server will be in the format:
+    <code language = "JSON">
+      <pre>
+        {
+                  id: <i>integer</i>,
+             book_id: <i>integer</i>,
+           book_name: <i>string</i>,
+             chapter: <i>integer</i>,
+    previous_chapter:
+              {
+                book_name: <i>string</i>,
+                  chapter: <i>string</i>
+              },
+        next_chapter:
+              {
+                book_name: <i>string</i>,
+                  chapter: <i>integer</i>
+              },
+           info_html: <i>html_fragment_string</i>
+        }
+      </pre>
+    </code>
+  </p>
+</div>

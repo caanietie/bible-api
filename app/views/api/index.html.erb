@@ -1,3 +1,11 @@
 <%= render "shared/header_footer" do %>
   <h3>KJV Bible API</h3>
+  <p>
+    At present, response from the server are only available in JSON format.
+    <ul>
+      <li><%= render "multiple" %></li></li>
+      <li><%= render "chapter" %></li>
+      <li><%= render "verse" %></li>
+      <li><%= render "search" %></li>
+    </ul>
 <% end %>

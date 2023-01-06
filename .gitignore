@@ -33,3 +33,10 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# temp git ignores
+app/controllers/concerns/versify*.rb
+
+# ignore swap file
+*.swp
+db/seeds2.rb

@@ -1,0 +1,41 @@
+<div>
+  <h4>Requesting multiple chapters and verses of a book</h4>
+  <p>
+  To request for a multiple chapters and verses of a book,
+  send the request in the following format
+    <code>
+      <pre>/kjv_bible/api/kjv_bible/<em>passages</em></pre>
+    </code>
+    where <em>passages</em> contains multiple bible passages beginning with
+    the name of the book. The chapters along with the verses are seperated by
+    by a semicolon while the verses are seperated by commas. Verse ranges are
+    specified by seperating the starting and ending verse by a hyphen.<br>
+    <div>A valid <em>passages</em> would therefore look like this:
+      <span>rev 10:2,4,6-10;6:1-3,6,7</span>
+    </div>
+  </p>
+  <p>
+    Response from the server will be in the format:
+    <code language = "JSON">
+      <pre>
+        {
+                  id: <i>integer</i>,
+             book_id: <i>integer</i>,
+           book_name: <i>string</i>,
+             chapter: <i>integer</i>,
+    previous_chapter:
+              {
+                book_name: <i>string</i>,
+                  chapter: <i>string</i>
+              },
+        next_chapter:
+              {
+                book_name: <i>string</i>,
+                  chapter: <i>integer</i>
+              },
+           info_html: <i>html_fragment_string</i>
+        }
+      </pre>
+    </code>
+  </p>
+</div>

@@ -1,0 +1,32 @@
+<div>
+  <code>
+    <pre>/kjv_bible/api/kjv_bible/<em>book_name</em>/<em>chapter</em>/<em>verse</em></pre>
+  </code>
+  where <em>book_name</em> is the name of the book in the Bible,
+  <em>chapter</em> is the chapter in <em>book_name</em>,
+  and <em>verse</em> is a valid verse in the chapter <em>verse</em>
+  may be comma seperated numbers (like 1,2,4,10) or a <b>-</b>
+  seperated range (like 2-10).<br>
+  <p>
+    Response from the server will be in the format:
+    <code language = "JSON">
+      <pre>
+      {
+          book_id: <i>integer</i>,
+        book_name: <i>string</i>,
+          chapter: <i>integer</i>,
+           verses: [
+                {
+                     id: <i>integer</i>,
+                  verse: <i>integer</i>,
+              info_html: <i>html_fragment_string</i>,
+              info_text: <i>string</i>
+                }, ...
+          ]
+      }
+      </pre>
+    </code>
+    The <em>verses</em> array in the response contains all verses specified
+    in the comma seperated list or range.
+  </p>
+</div>

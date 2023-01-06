@@ -1,0 +1,28 @@
+<div>
+  <code>
+    <pre>/kjv_bible/api/kjv_bible/<em>book_name</em>/<em>chapter</em>/verses</pre>
+  </code>
+  where <em>book_name</em> is the name of the book in the Bible
+  and <em>chapter</em> is the chapter in <em>book_name</em>.<br>
+  <p>
+    Response from the server will be in the format:
+    <code language = "JSON">
+      <pre>
+      {
+          book_id: <i>integer</i>,
+        book_name: <i>string</i>,
+          chapter: <i>integer</i>,
+           verses: [
+              {
+                     id: <i>integer</i>,
+                  verse: <i>integer</i>,
+              info_html: <i>html_fragment_string</i>,
+              info_text: <i>string</i>
+              }, ...
+          ]
+      }
+      </pre>
+    </code>
+    The <em>verses</em> array in the response contains all verses in <em>chapter</em> in <em>book_name</em>.
+  </p>
+</div>

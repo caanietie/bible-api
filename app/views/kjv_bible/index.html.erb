@@ -1,1 +1,18 @@
-<%= render "shared/header_footer" %>
+<%= render "shared/header_footer" do %>
+  <div style = "display:flex; justify-content: space-around">
+    <%= form_with url: "#", data: {controller: :read} do |form| %>
+      <%= form.text_field :book, placeholder: :Books, "data-read-target": :book, value: :Genesis, class: "book-name" %>
+      <%= form.text_field :chapter, placeholder: "Chapter", type: :number, min: 1, max: 150, "data-read-target": :chapter, value: 1, class: "chapter" %>
+      <%= form.submit "Read", class: "reqBtn", data: {action: "click->read#chapterRequest"} %>
+    <% end %>
+
+    <%= form_with url: "#", data: {controller: :search} do |form| %>
+      <%= form.text_field :search, placeholder: "Enter keyword", "data-search-target": :search, class: "bible-search" %>
+      <%= form.submit "Search", class: "searchBtn", data: {action: "click->search#searchBible"} %>
+    <% end %>
+  </div>
+  <div id = "bible-root">
+    <%= image_tag "spinner.png", class: "spinner-img" %>
+  </div>
+  <%#= render "chapter_nav" %>
+<% end %>
