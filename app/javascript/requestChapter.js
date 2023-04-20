@@ -1,7 +1,8 @@
-export default function chapterRequest(book, chapter) {
-  const addr = "http://localhost:3000/kjv_bible/api/kjv_bible";
+export const bibleUrl = "/kjv_bible/api/kjv_bible";
+
+export default function requestChapter(book, chapter) {
   const bibleRoot = document.querySelector("#bible-root");
-  fetch(`${addr}/${book}/${chapter}`)
+  fetch(`${bibleUrl}/${book}/${chapter}`)
     .then(response => response.json())
     .then(response => {
       bibleRoot.innerHTML = `<h2>${response.book_name}</h2>` + response.info_html;
@@ -19,13 +20,13 @@ function renderChapterNavigation(prevResp, nextResp) {
   chapNav.className = "chapter-nav";
   chapNav.appendChild(chapterNavigation({
     idBtn: "prevBtn", idSpn: "prevSpan",
-    clk: () => chapterRequest(prevResp.book_name, prevResp.chapter),
+    clk: () => requestChapter(prevResp.book_name, prevResp.chapter),
     txtBtn: `${prevResp.book_name} ${prevResp.chapter}`,
     txtSpn: "Previous Chapter"
   }));
   chapNav.appendChild(chapterNavigation({
     idBtn: "nextBtn", idSpn: "nextSpan",
-    clk: () => chapterRequest(nextResp.book_name, nextResp.chapter),
+    clk: () => requestChapter(nextResp.book_name, nextResp.chapter),
     txtBtn: `${nextResp.book_name} ${nextResp.chapter}`,
     txtSpn: "Next Chapter"
   }));
