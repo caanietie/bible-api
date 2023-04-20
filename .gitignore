@@ -34,9 +34,19 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+# Ignore vscode folder
+/.vscode
+
 # temp git ignores
 app/controllers/concerns/versify*.rb
 
 # ignore swap file
 *.swp
+
+# Ignore file used to generate constants for berean gem
 db/seeds2.rb
+
+# Ignore to-do file
+TODO
+
+*.txt
