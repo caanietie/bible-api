@@ -10,9 +10,9 @@ class API::VersesController < API::ApplicationController
   private
 
   def versify from_show_action = false
-    hsh = {book_name: params[:book], chapter: params[:chapter].to_i, verse: 1}
-    bible_passage = BiblePassage.from_h hsh
-    book = Book.find_by name: bible_passage.book_name
+    hsh = {book: params[:book], chapter: params[:chapter].to_i, verse: 1}
+    bible_passage = Berean.from_h hsh
+    book = Book.find_by name: bible_passage.book
     chapter = book.chapters.find_by chapter: bible_passage.chapter
     verse = chapter.verses.select(%i[id verse info_html info_text]).distinct
     verse = verse.where(verse: normalize_verse(params[:verse])) if from_show_action

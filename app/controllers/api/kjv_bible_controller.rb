@@ -1,4 +1,6 @@
 class API::KJVBibleController < API::ApplicationController
+  include berean
+
   def show
     passages = BiblePassage.multiple_passages params[:id]
     book = Book.find_by name: passages[0].book_name
